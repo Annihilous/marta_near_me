@@ -25,6 +25,7 @@ class LocationsController < ApplicationController
       if nearby(@location.latitude, @location.longitude, bus["LONGITUDE"].to_f, bus["LATITUDE"].to_f)
         @nearby_busses.push(bus)
         @bus_count += 1
+        @nearby_buses.push(bus)
       end
     end
   end
