@@ -19,13 +19,12 @@ class LocationsController < ApplicationController
 
     @bus_count = 0
 
-    @nearby_busses = []
+    @nearby_buses = []
 
-    @buses.each do | bus |
-      if nearby(@location.latitude, @location.longitude, bus["LONGITUDE"].to_f, bus["LATITUDE"].to_f)
-        @nearby_busses.push(bus)
-        @bus_count += 1
+    @buses.each_with_index do | bus, index |
+      if nearby(@location.longitude, @location.latitude, bus["LONGITUDE"].to_f, bus["LATITUDE"].to_f)
         @nearby_buses.push(bus)
+        @bus_count += 1
       end
     end
   end
